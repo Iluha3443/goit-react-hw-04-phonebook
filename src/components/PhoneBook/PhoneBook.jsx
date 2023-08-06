@@ -17,29 +17,30 @@ const PhoneBook = () => {
         const nameContact = evt.target.name.value;
         const numberTel = evt.target.number.value;
         const nameRepeat = contacts.map(contact => contact.name);
-        
         if (nameRepeat.includes(nameContact)) {
             alert(`${nameContact} is already in contacts`);
             evt.target.name.value = '';
             evt.target.number.value = '';
             return
         }
-        setContacts(prevState => ({
-            contacts: [...prevState.contacts, { id: nanoid(), name: nameContact, number: numberTel }]
-        }));
+         let contact = {
+      id: nanoid(),
+      name:nameContact,
+      number:numberTel,
+    }
+
+    setContacts(contacts => ([...contacts, contact]))
        
         evt.target.name.value = '';
         evt.target.number.value = '';
     };
 
- const deleteNumber = (id) => {
-  setContacts(prevState => ({
-    ...prevState,
-    contacts: prevState.contacts.filter(contact => contact.id !== id)
-  }));
+    const deleteNumber = (id) => {
+        const searchResults  = Object.values(contacts).filter(contact => contact.id !== id);
+        setContacts(searchResults )
 }
 
-  const  searchByName = (e) => {
+     const searchByName = (e) => {
         const nameInput = e.target.value.toLowerCase();
         const searchResults = contacts.filter((contact) => contact.name.toLowerCase().includes(nameInput));
        
