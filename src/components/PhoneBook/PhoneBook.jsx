@@ -40,14 +40,12 @@ const PhoneBook = () => {
         setContacts(searchResults )
 }
 
-     const searchByName = (e) => {
+    const searchByName = (e) => {
         const nameInput = e.target.value.toLowerCase();
-        const searchResults = contacts.filter((contact) => contact.name.toLowerCase().includes(nameInput));
-       
-        if (searchResults.length > 0) {
-            setFilter(nameInput);
-        }   
-    }
+        const searchResults = contacts.filter(contact => contact.name.includes(nameInput));
+        setFilter(nameInput);
+      
+}
 
 
   
