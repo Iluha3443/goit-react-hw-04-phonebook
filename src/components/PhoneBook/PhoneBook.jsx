@@ -43,7 +43,10 @@ const PhoneBook = () => {
     const searchByName = (e) => {
         const nameInput = e.target.value.toLowerCase();
         const searchResults = contacts.filter(contact => contact.name.includes(nameInput));
+          if (searchResults.length > 0) {
         setFilter(nameInput);
+          
+        }   
       
 }
 
